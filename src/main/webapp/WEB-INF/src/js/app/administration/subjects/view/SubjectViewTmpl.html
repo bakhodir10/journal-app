@@ -1,0 +1,40 @@
+<div class="card-header bg-white">
+    <div class="media">
+        <div class="media-body ">
+            <p class="card-subtitle" ng-bind="subjectView.subject.name"></p>
+        </div>
+        <div class="media-right media-middle">
+            <a title="Add" class="btn btn-circle btn-white"
+               ui-sref="app.main.settings.subjects.subSubjects_add({subjectUuid: subjectView.subject.uuid})">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+    <th>Наименование</th>
+    <th></th>
+    </thead>
+    <tbody>
+    <tr ui-sref-active="table-active"
+        ng-repeat="subSubject in  subjectView.subSubjects">
+        <td width="80%">
+            <a ui-sref="app.main.settings.subjects.view({subjectUuid:subject.uuid})">
+                <span ng-bind="subSubject.name"></span>
+            </a>
+        </td>
+        <td width="20%">
+            <div class="media-right media-middle">
+                <a title="Edit"
+                   ui-sref="app.main.settings.subjects.subSubjects_edit({subjectUuid: subjectView.subject.uuid, subSubjectUuid: subSubject.uuid})"
+                   class="btn btn-circle-sm btn-white"><i class="material-icons">edit</i></a>
+            </div>
+            <div class="media-right media-middle">
+                <a title="Delete" class="btn btn-circle-sm btn-white"
+                   ng-click="subjectView.delete(subSubject)"><i class="material-icons">delete</i></a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>

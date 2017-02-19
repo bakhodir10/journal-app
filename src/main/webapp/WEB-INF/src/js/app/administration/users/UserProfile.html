@@ -1,0 +1,53 @@
+<div class="card-block">
+    <form name="registerForm" role="form" ng-submit="register.process()">
+        <div class="col-lg-3">
+            <img src="public/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="140">
+        </div>
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-lg-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="fullName">FullName</label>
+                        <input type="text" class="form-control" id="fullName" ng-model="register.appForm.citizenName">
+                    </fieldset>
+                </div>
+                <div class="col-lg-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="userName">UserName</label>
+                        <input type="text" class="form-control" id="userName" ng-model="register.appForm.citizenName">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="text" class="form-control" id="password" ng-model="register.appForm.citizenName">
+                    </fieldset>
+                </div>
+                <div class="col-lg-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="repeat_password">Repeat Password</label>
+                        <input type="text" class="form-control" id="repeat_password" ng-model="register.appForm.citizenName">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <ui-select ng-model="userAddModalCtrl.department.selected">
+                        <ui-select-match>
+                            <span ng-bind="$select.selected.id"></span>
+                        </ui-select-match>
+                        <ui-select-choices
+                                repeat="item in (userAddModalCtrl.departments | filter: $select.search) track by item.nameUz">
+                            <span ng-bind="item.nameUz"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <span class="input-group-btn">
+                    <button class="btn btn-success" type="button">Add</button>
+                </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

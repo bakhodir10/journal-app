@@ -1,0 +1,34 @@
+{
+  "name": "ijro",
+  "version": "1.0.0",
+  "description": "Unicon Common Platform for Applications",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "build:d": "webpack -d",
+    "build:dw": "webpack -d -w",
+    "build:p": "webpack -p"
+  },
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "latest",
+    "angular-aria": "latest",
+    "angular-loading-bar": "latest",
+    "angular-ui-bootstrap": "latest",
+    "angular-ui-router": "latest",
+    "bootstrap-layout-scrollable": "latest",
+    "js-base64": "latest",
+    "moment": "^2.15.2",
+    "simplebar": "github:grsmto/simplebar",
+    "sweetalert": "^1.1.3",
+    "ui-select": "latest"
+  },
+  "devDependencies": {
+    "css-loader": "latest",
+    "file-loader": "latest",
+    "ng-annotate-loader": "latest",
+    "raw-loader": "latest",
+    "style-loader": "latest",
+    "webpack": "latest"
+  }
+}

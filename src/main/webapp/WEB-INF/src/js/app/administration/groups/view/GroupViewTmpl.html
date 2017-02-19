@@ -1,0 +1,40 @@
+<div class="card-header bg-white">
+    <div class="media">
+        <div class="media-body ">
+            <p class="card-subtitle"
+               ng-bind="groupViewCtrl.subject.name"></p>
+        </div>
+        <div class="media-right media-middle">
+            <a title="Add" class="btn btn-circle btn-white" ng-click="groupViewCtrl.editGroup()">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+    <th>Name</th>
+    <th></th>
+    </thead>
+    <tbody>
+    <tr ui-sref-active="table-active"
+        ng-repeat="group in  groupViewCtrl.groups">
+        <td width="80%">
+            <a ui-sref="app.main.students({subjectUuid: groupViewCtrl.subject.uuid, groupUuid: group.uuid})">
+                <span ng-bind="group.name"></span>
+            </a>
+        </td>
+        <td width="20%">
+            <div class="media-right media-middle">
+                <a title="Edit"
+                   ng-click="groupViewCtrl.editGroup(group)"
+                   class="btn btn-circle-sm btn-white"><i class="material-icons">edit</i></a>
+            </div>
+            <div class="media-right media-middle">
+                <a title="Delete" class="btn btn-circle-sm btn-white"
+                   ng-click="groupViewCtrl.deleteGroup(group)"><i class="material-icons">delete</i></a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>

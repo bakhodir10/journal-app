@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Настройки</a></li>
+    </ol>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card settings-group">
+                <div class="card-header bg-white">
+                    <div class="media">
+                        <div class="media-body ">
+                            <h5 class="card-title">Группа Организации</h5>
+                        </div>
+                        <div class="media-right media-middle">
+                            <a ui-sref="app.main.settings.panel.AddOrgGroup" class="btn btn-circle btn-white"><i class="material-icons">add</i></a>
+                        </div>
+                    </div>
+                </div>
+                    <table class="table table-hover table-md m-a-0">
+                    <tbody>
+                    <tr ng-repeat="orgGroup in adminCtrl.orgGroupList">
+                        <td>
+                            <a ui-sref="app.main.settings.panel.orgGroup({groupId: orgGroup.id})" ng-bind="orgGroup.nameRu"></a>
+                        </td>
+                        <td class="right">
+                            <a ui-sref="app.main.settings.panel.orgGroupManage({groupId: orgGroup.id})"><i class="material-icons">edit</i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <div class="card settings-group">
+                <ui-view>
+                    <div class="card-block text-xs-center">
+                        <h4 class="card-title">Бўлинма танланмаган</h4>
+                        <p class="card-text">Ходимлар рўйхатини кўриш учун бшлинмалардан бирини танланг</p>
+                    </div>
+                </ui-view>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,76 @@
+<div class="card-header bg-white">
+    <div class="media">
+        <div class="media-body">
+            <div>
+                <p class="card-subtitle"
+                   ng-bind="userEditCtrl.user.fullName"></p>
+            </div>
+        </div>
+        <div class="media-right media-middle">
+            <a title="Save" ng-click="userEditCtrl.process()" class="btn btn-circle btn-white"><i
+                    class="material-icons">check</i></a>
+        </div>
+        <div class="media-right media-middle">
+            <a title="Cancel" class="btn btn-circle btn-white"
+               ui-sref="app.main.settings.users">
+                <i class="material-icons">cancel</i></a>
+        </div>
+    </div>
+</div>
+<div class="card-block">
+    <form name="userEdit" role="form">
+        <div class="card-block">
+            <form name="registerForm" role="form">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <fieldset class="form-group">
+                            <span>Login</span>
+                            <input class="form-control" type="text" ng-model="userEditCtrl.user.username">
+                        </fieldset>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <fieldset class="form-group">
+                            <span>Name</span>
+                            <input class="form-control" type="text" ng-model="userEditCtrl.user.fullName">
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <fieldset class="form-group">
+                            <label for="subject">Department</label>
+                            <select id="service" class="form-control select2-single" ng-select2
+                                    select2-data="userEditCtrl.departments"
+                                    ng-model="userEditCtrl.user.department"></select>
+                        </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                        <fieldset class="form-group">
+                            <label class="form-label">Position</label>
+                            <select id="subject" class="form-control select2-single" ng-select2
+                                    select2-data="userEditCtrl.positions"
+                                    ng-model="userEditCtrl.user.position"></select>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="col-lg-12">
+                        <fieldset class="form-group">
+                            <span>Roles</span>
+                            <br>
+
+                            <div class="c-inputs-stacked">
+                                <label class="c-input c-radio" ng-repeat="role in userEditCtrl.roles">
+                                    <input ng-model="userEditCtrl.user.role" ng-value="role.uuid"
+                                           type="radio">
+                                    <span class="c-indicator"></span> {{role.name}}
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </form>
+</div>

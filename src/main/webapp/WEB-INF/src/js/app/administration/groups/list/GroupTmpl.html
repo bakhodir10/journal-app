@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="#">Main</a></li>
+        <li><a href="#">Settings</a></li>
+    </ol>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card settings-group">
+                <div class="card-header bg-white">
+                    <div class="media">
+                        <div class="media-body ">
+                            <h5 class="card-title">Subject List</h5>
+                        </div>
+                        <div class="media-right media-middle">
+                            <a title="Add" ui-sref="app.main.settings.subjects.add"
+                               class="btn btn-circle btn-white"><i
+                                    class="material-icons">add</i></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <tbody>
+                    <tr ui-sref-active="table-active"
+                        ng-repeat="subject in subjects.subjectList">
+                        <td width="80%">
+                            <a ui-sref="app.main.settings.subjects.subSubjects({subjectUuid: subject.uuid})">
+                                <span ng-bind="subject.name"></span>
+                            </a>
+                        </td>
+                        <td width="20%">
+                            <div class="media-right media-middle">
+                                <a title="Edit"
+                                   ui-sref="app.main.settings.subjects.edit({subjectUuid: subject.uuid})"
+                                   class="btn btn-circle-sm btn-white"><i class="material-icons">edit</i></a>
+                            </div>
+                            <div class="media-right media-middle">
+                                <a title="Delete" class="btn btn-circle-sm btn-white"
+                                   ng-click="subjects.delete(subject)"><i class="material-icons">delete</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card settings-group">
+                <ui-view>
+                    <div class="card-block text-xs-center">
+                        <h4 class="card-title">Subject not selected</h4>
+                        <p class="card-text">Please select one item</p>
+                    </div>
+                </ui-view>
+            </div>
+        </div>
+    </div>
+
+</div>

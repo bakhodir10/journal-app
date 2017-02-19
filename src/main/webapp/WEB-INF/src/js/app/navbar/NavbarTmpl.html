@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-primary navbar-full navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="pull-xs-left navbar-brand">
+            <a ui-sref="app.main.home" class="sidebar-brand sidebar-brand-border sidebar-brand-bg m-b-0">
+            <img src="./../../../../../public/images/1483564710_toggle_log.png">
+        </a>
+        </div>
+        <form class="form-inline pull-xs-left hidden-sm-down">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn"><button class="btn" type="button"><i
+                        class="material-icons">search</i></button></span>
+            </div>
+        </form>
+
+        <ul class="nav navbar-nav pull-xs-right hidden-sm-down">
+            <li class="nav-item dropdown open">
+                <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="true">
+                    <img src="../../../../../public/images/people/110/woman-5.jpg" alt="Avatar" class="img-circle" width="40">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-list" aria-labelledby="Preview">
+                    <a class="dropdown-item" ><i class="material-icons md-18">lock</i> <span class="icon-text">Edit Account</span></a>
+                    <a class="dropdown-item" ><i class="material-icons md-18">person</i> <span class="icon-text">Public Profile</span></a>
+                    <a class="dropdown-item" ui-sref="login">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
