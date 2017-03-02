@@ -55,6 +55,26 @@ module.exports = function ($stateProvider, $urlRouterProvider, $urlMatcherFactor
                 }
             }
         })
+
+        .state('app.main.attended', {
+            url: '/subjects/:subjectUuid/groups/:groupUuid/attended',
+            template: require('./../app/administration/students/view/StudentViewTmpl.html'),
+            controller: require('./../app/administration/students/view/StudentViewCtrl'),
+            controllerAs: 'studentViewCtrl',
+            resolve : {
+                group: function ($stateParams, GroupService) {
+                    return GroupService.findOne($stateParams.groupUuid);
+                },
+                subject: function ($stateParams, SubjectService) {
+                    return SubjectService.findOne($stateParams.subjectUuid);
+                },
+                students : function ($stateParams, StudentService) {
+                    return StudentService.findPage($stateParams.groupUuid).then(function (response) {
+                        return response.content;
+                    });
+                }
+            }
+        })
         .state('app.main.students', {
             url: '/subjects/:subjectUuid/groups/:groupUuid/students',
             template: require('./../app/administration/students/view/StudentViewTmpl.html'),
