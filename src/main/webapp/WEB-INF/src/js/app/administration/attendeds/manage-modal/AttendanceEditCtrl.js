@@ -2,8 +2,7 @@ module.exports = function ($state, $uibModalInstance, attendance, AttendanceServ
 
     var _this = this;
     _this.attendance = attendance;
-    console.log(attendance);
-
+    _this.attendance.date = new Date(_this.attendance.date);
     _this.update = function () {
         console.log(_this.attendance);
         AttendanceService.update(attendance).then(function (response) {

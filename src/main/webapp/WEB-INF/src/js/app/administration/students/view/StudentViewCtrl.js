@@ -6,7 +6,6 @@ module.exports = function ($stateParams, $uibModal, subject, group, students, St
     _this.students = students;
     _this.data = '';
     _this.attendances = group.attendances;
-    console.log(students);
 
     _this.createStudent = function () {
         $uibModal.open({

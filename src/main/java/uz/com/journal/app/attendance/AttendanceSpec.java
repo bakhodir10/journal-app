@@ -4,7 +4,6 @@ package uz.com.journal.app.attendance;
 import org.springframework.data.jpa.domain.Specification;
 import uz.com.journal.core.NonDeletableSpec;
 import uz.com.platform.app.users.User;
-import uz.com.platform.app.users.User_;
 import uz.com.platform.app.utils.SpecUtils;
 
 public abstract class AttendanceSpec {
