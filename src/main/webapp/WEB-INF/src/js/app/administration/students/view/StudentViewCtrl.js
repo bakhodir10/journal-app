@@ -70,6 +70,7 @@ module.exports = function ($stateParams, $uibModal, subject, group, students, St
             //     if (value.uuid == data.uuid) this.attendance[key] = data;
             // });
             // location.reload();
+
         }, function () {
             console.log('dismissed');
         })
