@@ -30,7 +30,6 @@ module.exports = function ($stateParams, $uibModal, GroupService, groups, subjec
                 })
             }
         }, function () {
-            console.log('dismissed');
         })
     };
 

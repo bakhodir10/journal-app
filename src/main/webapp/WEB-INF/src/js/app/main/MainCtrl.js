@@ -36,7 +36,6 @@ module.exports = function ($uibModal, SubjectService) {
                 })
             }
         }, function () {
-            console.log('dismissed');
         })
     };
 

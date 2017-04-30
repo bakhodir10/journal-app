@@ -9,7 +9,6 @@ module.exports = function ($state, AuthService) {
 
     _this.process = function () {
         AuthService.process(_this.credentials.username, _this.credentials.password, true).then(function (token) {
-            console.log(token);
             $state.go('app.main.home');
         }).catch(function (response) {
             return console.log('error', response);

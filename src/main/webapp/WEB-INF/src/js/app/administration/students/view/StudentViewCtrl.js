@@ -24,7 +24,6 @@ module.exports = function ($stateParams, $uibModal, subject, group, students, St
         }).result.then(function (data) {
             _this.students.push(data);
         }, function () {
-            console.log('dismissed');
         })
     };
 
@@ -65,17 +64,16 @@ module.exports = function ($stateParams, $uibModal, subject, group, students, St
                 }
             }
         }).result.then(function (data) {
-            // angular.forEach(_this.attendances, function (value, key) {
-            //     if (value.uuid == data.uuid) this.attendance[key] = data;
-            // });
-            // location.reload();
+            _this.attendances = _this.attendances.map(function (attendance) {
+                if (attendance.uuid == data.uuid) return data;
+                return attendance;
+            })
 
         }, function () {
-            console.log('dismissed');
         })
     };
 
-    _this.changeMark = function (mark) {
+    _this.changeMark = function (marks, mark) {
         $uibModal.open({
             template: require('./../../marks/manage-modal/MarkEditTmpl.html'),
             size: 'md',
@@ -87,12 +85,10 @@ module.exports = function ($stateParams, $uibModal, subject, group, students, St
                 }
             }
         }).result.then(function (data) {
-            // angular.forEach(_this.attendances, function (value, key) {
-            //     if (value.uuid == data.uuid) this.attendance[key] = data;
-            // });
-            // location.reload();
+            angular.forEach(marks, function (value, key) {
+                if (value.uuid == data.uuid) marks[key] = data;
+            });
         }, function () {
-            console.log('dismissed');
         })
     };
 };

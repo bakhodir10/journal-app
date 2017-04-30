@@ -2,7 +2,6 @@
 module.exports = function ($http, $rootScope, $stateParams, $state, AuthService) {
     var token = AuthService.updateToken();
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
-        //console.log(AuthService.getCurrentUser());
         if (toState.name !== 'login' && !AuthService.getToken()) {
             event.preventDefault();
             $state.go('login');

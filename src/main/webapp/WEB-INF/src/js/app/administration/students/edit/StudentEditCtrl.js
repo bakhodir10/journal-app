@@ -1,6 +1,5 @@
 module.exports = function ($uibModalInstance, $state, $stateParams, subject, group, StudentService) {
     var _this = this;
-    console.log(subject);
     _this.appForm = {};
     _this.appForm.subject = subject.uuid;
     _this.appForm.group = group.uuid;

@@ -29,7 +29,6 @@ module.exports = function ($http) {
 
     _this.create = function (user) {
         return $http.post('/api/users', user).then(function (response) {
-            console.log(response);
             return response.data;
         });
     };

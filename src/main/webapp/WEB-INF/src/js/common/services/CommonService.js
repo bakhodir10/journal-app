@@ -6,7 +6,6 @@ module.exports = function ($http, $q, $window, $filter, $uibModal) {
 
     _this.select2CleanChild = function (object) {
         angular.forEach(object, function (value, key) {
-            console.log(value);
             if (value.children.length == 0) {
                 delete value.children;
             }
@@ -26,7 +25,6 @@ module.exports = function ($http, $q, $window, $filter, $uibModal) {
             size: 'lg'
         }).result.then(function (data) {
             if (data.result == 200) {
-                console.log(data);
             }
         });
     };

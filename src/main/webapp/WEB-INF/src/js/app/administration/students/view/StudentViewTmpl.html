@@ -36,6 +36,7 @@
                 <th ng-repeat="attendance in studentViewCtrl.attendances"
                     ng-click="studentViewCtrl.changeAttendance(attendance)" ng-bind="attendance.date | date : 'dd/MM'">
                 </th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -44,7 +45,7 @@
                 <td ng-bind="$index + 1"></td>
                 <td ng-bind="student.name"></td>
                 <td style="text-align: center" ng-repeat="mark in student.marks" ng-bind="mark.status"
-                    ng-click="studentViewCtrl.changeMark(mark)"></td>
+                    ng-click="studentViewCtrl.changeMark(student.marks, mark)"></td>
                 <th>
                     <button type="button" class="btn btn-primary btn-circle"
                             ng-click="studentViewCtrl.deleteStudent(student)">

@@ -5,7 +5,7 @@ module.exports = function ($state, $uibModalInstance, mark, MarkService) {
 
     _this.update = function () {
         MarkService.update(mark).then(function (response) {
-            _this.dismiss();
+            $uibModalInstance.close(response);
         })
     };
 

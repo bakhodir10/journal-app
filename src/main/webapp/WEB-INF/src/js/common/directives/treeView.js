@@ -46,7 +46,6 @@ module.exports = function () {
                     ]}
                 ],
                 activate: function(event, data){
-                    console.log("Active node: " + data.node);
                     
                 }
             });            

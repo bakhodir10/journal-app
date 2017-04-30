@@ -13,8 +13,6 @@ module.exports = function () {
             };
 
             element.bind("blur keyup change", function(key, value) {
-                console.log(key);
-                console.log(value);
                 scope.$apply(read);
             });
         }

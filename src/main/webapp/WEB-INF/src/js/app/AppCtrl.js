@@ -10,7 +10,6 @@ module.exports = function ($state, $rootScope, AuthService, currentUser) {
 
     $rootScope.$on('clickEvent', function () {
         $state.go('login');
-        console.log('appCtrl');
     })
 
 };

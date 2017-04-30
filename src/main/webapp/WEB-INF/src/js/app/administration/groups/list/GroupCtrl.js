@@ -4,7 +4,6 @@ module.exports = function ($state, $rootScope, SubjectService) {
     
     SubjectService.findPage().then(function (response) {
         _this.subjectList = response;
-        console.log(response);
     });
 
     _this.delete = function (subject) {
