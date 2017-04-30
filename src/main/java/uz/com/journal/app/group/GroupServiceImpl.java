@@ -6,17 +6,23 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import uz.com.journal.app.attendance.Attendance;
+import uz.com.journal.app.attendance.AttendanceRepository;
 import uz.com.journal.app.subject.Subject;
 import uz.com.journal.app.subject.SubjectRepository;
 import uz.com.journal.core.NonDeletableRepository;
 import uz.com.journal.core.NonDeletableServiceImpl;
 import uz.com.platform.app.users.User;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Service
 public class GroupServiceImpl extends NonDeletableServiceImpl<Group> implements GroupService {
 
     private GroupRepository groupRepository;
     private SubjectRepository subjectRepository;
+    private AttendanceRepository attendanceRepository;
 
     @Autowired
     public void setGroupRepository(GroupRepository groupRepository) {
@@ -26,6 +32,11 @@ public class GroupServiceImpl extends NonDeletableServiceImpl<Group> implements 
     @Autowired
     public void setSubjectRepository(SubjectRepository subjectRepository) {
         this.subjectRepository = subjectRepository;
+    }
+
+    @Autowired
+    public void setAttendanceRepository(AttendanceRepository attendanceRepository) {
+        this.attendanceRepository = attendanceRepository;
     }
 
     @Override
@@ -58,6 +69,15 @@ public class GroupServiceImpl extends NonDeletableServiceImpl<Group> implements 
     public Group create(GroupItem subjectItem, User currentUser) {
         Group group = new Group();
         transfer(subjectItem, group);
+        Set<Attendance> attendances = new HashSet<>();
+        super.save(group, currentUser);
+        for (int i = 0; i < 24; i++) {
+            Attendance attendance = new Attendance();
+            attendance.setGroup(group);
+            attendanceRepository.save(attendance);
+            attendances.add(attendance);
+        }
+        group.setAttendances(attendances);
         return super.save(group, currentUser);
     }
 

@@ -33,6 +33,6 @@ public class Student extends NonDeletable {
     @JsonManagedReference
     @OneToMany(mappedBy = "student")
     @Where(clause = "deleted = false")
-    @OrderBy(value = "assign_date ASC")
+    @OrderBy(value = "createdAt ASC")
     private Set<Mark> marks;
 }

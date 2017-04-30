@@ -1,12 +1,12 @@
 /*@ngInject*/
-module.exports = function ($stateParams, $uibModal, subject, group, students, StudentService) {
+module.exports = function ($stateParams, $uibModal, subject, group, students, StudentService, AttendanceService) {
     var _this = this;
     _this.subject = subject;
     _this.group = group;
     _this.students = students;
+    _this.data = '';
+    _this.attendances = group.attendances;
     console.log(students);
-    console.log(group);
-    _this.count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 
     _this.createStudent = function () {
         $uibModal.open({
@@ -54,14 +54,45 @@ module.exports = function ($stateParams, $uibModal, subject, group, students, St
     };
 
 
-    _this.saveData = function ($event, mark, student) {
-        console.log($event);
-        console.log($event.currentTarget.innerText);
-        console.log(mark);
-        console.log(student);
+    _this.changeAttendance = function (attendance) {
+        $uibModal.open({
+            template: require('./../../attendeds/manage-modal/AttendanceEditTmpl.html'),
+            size: 'md',
+            controller: require('./../../attendeds/manage-modal/AttendanceEditCtrl'),
+            controllerAs: 'ctrl',
+            resolve: {
+                attendance: function () {
+                    return angular.copy(attendance);
+                }
+            }
+        }).result.then(function (data) {
+            // angular.forEach(_this.attendances, function (value, key) {
+            //     if (value.uuid == data.uuid) this.attendance[key] = data;
+            // });
+            // location.reload();
+        }, function () {
+            console.log('dismissed');
+        })
     };
 
-    _this.change = function (mark) {
-        console.log(mark);
-    }
+    _this.changeMark = function (mark) {
+        $uibModal.open({
+            template: require('./../../marks/manage-modal/MarkEditTmpl.html'),
+            size: 'md',
+            controller: require('./../../marks/manage-modal/MarkEditCtrl'),
+            controllerAs: 'ctrl',
+            resolve: {
+                mark: function () {
+                    return angular.copy(mark);
+                }
+            }
+        }).result.then(function (data) {
+            // angular.forEach(_this.attendances, function (value, key) {
+            //     if (value.uuid == data.uuid) this.attendance[key] = data;
+            // });
+            // location.reload();
+        }, function () {
+            console.log('dismissed');
+        })
+    };
 };

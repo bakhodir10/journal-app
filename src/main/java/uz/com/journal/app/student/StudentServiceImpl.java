@@ -78,7 +78,6 @@ public class StudentServiceImpl extends NonDeletableServiceImpl<Student> impleme
         for (int i = 0; i < 24; i++) {
             Mark mark = new Mark();
             mark.setStudent(student);
-            mark.setSubject(subject);
             marks.add(mark);
             markRepository.save(mark);
         }

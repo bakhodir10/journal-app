@@ -9,7 +9,6 @@ import lombok.*;
 @Setter
 @Builder
 public class MarkItem {
-    private String name;
-    private String group;
-    private String subject;
+    private String status;
+    private String studentUuid;
 }

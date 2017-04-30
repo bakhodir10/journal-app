@@ -43,7 +43,6 @@ public abstract class StudentSpec {
         return (root, query, cb) -> {
             Class<?> resultType = query.getResultType();
             if (resultType != Long.class && resultType != long.class) {
-                root.fetch(Student_.marks, JoinType.LEFT).fetch(Mark_.subject, JoinType.LEFT);
                 root.fetch(Student_.marks, JoinType.LEFT).fetch(Mark_.student, JoinType.LEFT);
             }
             return null;

@@ -12,9 +12,6 @@
                 <label>Subject : <span class="card-title text-center"
                                        ng-bind="studentViewCtrl.subject.name"></span></label>
             </div>
-            <!--<div class="col-md-1">-->
-                <!--Year : <span>{{studentViewCtrl.group.createdAt | date : "yyyy"}}</span>-->
-            <!--</div>-->
             <a style="margin-bottom: 10px; float: right" title="Add" class="btn btn-circle btn-white"
                ng-click="studentViewCtrl.createStudent()">
                 <i class="material-icons">add</i>
@@ -26,30 +23,28 @@
             <tr>
                 <th rowspan="2" style="padding-bottom: 30px">#</th>
                 <th rowspan="2" style="padding-bottom: 30px">Name</th>
-                <th ng-repeat="count in studentViewCtrl.count" ng-bind="$index + 1"></th>
+                <th ng-if="$index < 18" ng-repeat="index in studentViewCtrl.attendances" ng-bind="$index + 1"></th>
                 <th>DN 1</th>
                 <th>DN 2</th>
                 <th>ON 1</th>
                 <th>ON 2</th>
                 <th>YN</th>
                 <th>Total</th>
-                <th></th>
+                <th>Action</th>
             </tr>
             <tr style="height: 50px">
-                <th ng-repeat="mark in studentViewCtrl.students[0].marks" contenteditable ng-keydown="studentViewCtrl.change(mark)">
-                    {{mark.date | date:"dd.MM"}}
+                <th ng-repeat="attendance in studentViewCtrl.attendances"
+                    ng-click="studentViewCtrl.changeAttendance(attendance)" ng-bind="attendance.date | date : 'dd/MM'">
                 </th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
 
             <tr ng-repeat="student in studentViewCtrl.students">
                 <td ng-bind="$index + 1"></td>
-                <td ng-bind="student.name" contenteditable></td>
-                <td style="text-align: center" ng-repeat="mark in student.marks" ng-model="studentViewCtrl.mark" contenteditable ng-bind="mark.status"
-                    ng-keydown="studentViewCtrl.saveData($event, mark, student)">
-                </td>
+                <td ng-bind="student.name"></td>
+                <td style="text-align: center" ng-repeat="mark in student.marks" ng-bind="mark.status"
+                    ng-click="studentViewCtrl.changeMark(mark)"></td>
                 <th>
                     <button type="button" class="btn btn-primary btn-circle"
                             ng-click="studentViewCtrl.deleteStudent(student)">

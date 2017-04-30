@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
+import uz.com.journal.app.attendance.Attendance;
 import uz.com.journal.app.student.Student;
 import uz.com.journal.app.subject.Subject;
 import uz.com.journal.core.NonDeletable;
@@ -31,4 +32,10 @@ public class Group extends NonDeletable {
     @OneToMany(mappedBy = "group")
     @Where(clause = "deleted = false")
     private Set<Student> students;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "group")
+    @Where(clause = "deleted = false")
+    @OrderBy(value = "date ASC")
+    private Set<Attendance> attendances;
 }
